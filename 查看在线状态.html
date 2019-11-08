@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<audio class="alt" controls src="alert.mp3" hidden="hidden"></audio>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function bbb(id){
+				var ajax = $.ajax({
+					type:"get",
+					url:"http://39.104.99.181:8075/state/date",
+					async:true,
+					data:{
+						id:id
+					}
+				});
+			return ajax;
+		}
+		
+		setInterval(function(){
+			$.when(bbb('011804010389')).done(function(message){
+				if(message.onoffline=='0'){
+					$('.alt')[0].play();
+					console.log(new Date())
+					console.log('011804010389')
+				}
+			})
+			$.when(bbb('011804010385')).done(function(message){
+				if(message.onoffline=='0'){
+					$('.alt')[0].play();
+					console.log(new Date())
+					console.log('011804010385')
+				}
+			})
+			$.when(bbb('01180401038A')).done(function(message){
+				if(message.onoffline=='0'){
+					$('.alt')[0].play();
+					console.log(new Date())
+					console.log('01180401038A')
+				}
+			})
+		},10000)
+	</script>
+</html>

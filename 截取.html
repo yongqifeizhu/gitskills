@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		var str = [{
+			"name": "",
+			"value": 24
+		}, {
+			"name": "未知厂商",
+			"value": 2
+		}, {
+			"value": 2
+		}, {
+			"name": "安恒信息",
+			"value": 2
+		}, {
+			"name": "Cisco",
+			"value": 1
+		}, {
+			"name": "VMware",
+			"value": 1
+		}, {
+			"name": "333",
+			"value": 1
+		}, {
+			"name": "1",
+			"value": 1
+		}, {
+			"name": "厂商112333333豆腐干33333333333333",
+			"value": 1
+		}, {
+			"name": "产商厂商产商厂商产商厂商产商厂商产商厂商",
+			"value": 1
+		}]
+		for(var i = 0; i < str.length; i++) {
+			if(str[i].name){
+				str[i].name = str[i].name.substring(0,5)
+			}else{
+				str[i].name = '' 
+			}
+		}
+		console.log(str)
+		
+	</script>
+
+</html>

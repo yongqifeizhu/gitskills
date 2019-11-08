@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return unescape(r[2]);
+			return null;
+		}
+		function isAlipayOrWechat() {
+			let _this = this;
+		    var userAgent = navigator.userAgent.toLowerCase();
+		    if(userAgent.match(/Alipay/i) == "alipay") {
+		        console.log("支付宝浏览器");
+				window.location.href='https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2018041602568851&scope=auth_user&redirect_uri=http://socket.wzmeilv.com/orderPayUserid.html&state='+getQueryString('state')
+		    } else if(userAgent.match(/MicroMessenger/i) == "micromessenger") {
+		        console.log("微信浏览器");
+				window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx54d64cd8bca34b38&redirect_uri=http://socket.wzmeilv.com/orderPayOpenid.html&response_type=code&scope=snsapi_base&state='+getQueryString('state')+'&connect_redirect=1#wechat_redirect'
+		    }else{
+		    	document.body.innerHTML = '<div style="text-align: center;padding-top:1rem;">请使用微信或支付宝扫码</div>';
+				return false;
+		    }
+		}
+		isAlipayOrWechat();
+	</script>
+</html>

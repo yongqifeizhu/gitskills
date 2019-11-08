@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<style type="text/css">
+		.a{height: 200px;width: 200px;border: 1px solid red;margin: 100px;position: relative;}
+		ul{margin: 0;padding: 0;}
+		li{list-style: none;white-space:nowrap;position: absolute;left: 20px;line-height: 100px;}
+	</style>
+	<body>
+		<div class="a">
+			<ul>
+				<li>爱上了的空间阿按时来到骄傲了</li>
+				<li>爱上了的空间阿斯利康大家时来到骄傲了</li>
+				<li>爱上了的空间阿斯利康大家按大师傅士大夫士大夫时来到骄傲了</li>
+				<li>爱上了的空间阿斯利康大家按</li>
+				<li>爱上了的空间阿斯利康大家按时来到骄傲了</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let lilen = $('li').length;
+		let widA = parseInt($('.a').css('width'));
+		for (let i=0;i<lilen;i++) {
+			$('li').eq(i).css('top',100*(i+1))
+		}
+		
+		console.log()
+		console.log()
+		setInterval(function(){
+			for (let i=0;i<lilen;i++) {
+				$('li').eq(i).css('top',parseInt($('li').eq(i).css('top'))-100)
+				//console.log(parseInt($('li').eq(i).css('top')))
+				if(parseInt($('li').eq(i).css('top'))<=-100){
+					$('li').eq(i).css('top',100*(lilen-1))
+				}
+				
+			}
+		},1500)
+		setInterval(function(){
+			
+			for (let i=0;i<lilen;i++) {
+				if (parseInt($('li').eq(i).css('width'))>widA&&($('li').eq(i).offset().top)<=($('.a').offset().top+200)) {
+					$('li').eq(i).css('left',parseInt($('li').eq(i).css('left'))-3)
+				}else{
+					$('li').eq(i).css('left',20)
+				}
+			}
+			
+			
+		},1000/60)
+	</script>
+</html>

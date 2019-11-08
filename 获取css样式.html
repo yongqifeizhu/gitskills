@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>js获取内部部样式</title>
+		<style>
+			#div {
+				width: 200px;
+				height: 200px;
+				border: 3px solid cyan;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div" "></div>
+</body>
+<script>
+    function getStyle(el, styleName) {
+		if( el.currentStyle ) {
+		// for IE
+			return el.currentStyle[styleName];
+		} else {
+		// for peace
+			return getComputedStyle(el, false)[styleName];
+		}
+	}
+    
+    console.log(getStyle(document.getElementById('div'),'width'))
+</script>
+</html>

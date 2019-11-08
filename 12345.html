@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		$.ajax({
+		    type:'get',
+		    url: "http://39.104.122.27:8080/weChat1/find?id=23412341234",
+		    success: function(result){
+				
+			},error:function(){                             //服务器响应失败处理函数
+		        //alert("服务器繁忙");
+		    }
+		});
+	</script>
+</html>

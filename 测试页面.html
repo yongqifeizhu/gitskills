@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<style>
+		li{display: flex;justify-content: space-between;width: 1000px;font-size: 12px;line-height: 24px;}
+		.red{color: red;}
+	</style>
+	<body>
+			<audio src="ddd.wav" controls="controls" id="music1" preload hidden></audio>
+	</body>
+	<script type="text/javascript">
+		let mae = '0';
+			setInterval(function(){
+				$.ajax({
+						type:'post',
+						url: "http://39.104.122.27:8087/cwsinfo/select",
+						data:{"id":'012019001111'},
+						dataType:'json',
+						success: function(result){
+						if(result.resCode === '0'){
+							console.log(result.result.message)
+							if(mae<result.result.message){
+								aaa();
+								$('body').append('<li class="red"><span>'+result.result.message+'</span><span>'+new Date()+'</span></li>')
+							}else{
+								$('body').append('<li><span>'+result.result.message+'</span><span>'+new Date()+'</span></li>')
+							}
+							mae = result.result.message;
+						}
+					},
+				})
+			},1000)
+			function aaa(){
+				var audio = document.getElementById('music1');
+				if(audio!==null){             
+						//检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+					if(audio.paused)                     {                 
+						audio.play();//audio.play();// 这个就是播放  
+					}
+					// else{
+					// 	audio.pause();// 这个就是暂停
+					// }
+				}
+			}
+	</script>
+</html>

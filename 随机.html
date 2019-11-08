@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function suiji(mun,min,max){
+			let arr = [];
+			for(let i = 0;i<mun;i++){
+				arr.push(Math.floor(Math.random()*(max-min))+min)
+			}
+			return arr;
+		}
+		function suiji2(mun,min,max){
+			
+			return mun*(Math.floor(Math.random()*(max-min))+min);
+		}
+		document.write(suiji2(37,190,220))
+	</script>
+</html>

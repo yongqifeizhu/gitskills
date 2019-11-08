@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .circleProgress_wrapper {
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            position: relative;
+            border: 1px solid #ddd;
+        }
+
+        .wrapper {
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+        }
+
+        .right {
+            right: 0;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .circleProgress {
+            width: 196px;
+            height: 196px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+        }
+
+        .rightcircle {
+            border-top: 2px solid green;
+            border-right: 2px solid green;
+            border-bottom:2px solid green; 
+            border-left:2px solid green; 
+            right: 0;
+            -webkit-animation: circleProgressLoad_right 10s linear infinite;
+        }
+
+        .leftcircle {
+            border-top: 2px solid green;
+            border-right: 2px solid green;
+            border-bottom:2px solid green; 
+            border-left:2px solid green; 
+            left: 0;
+            /* -webkit-transform:rotate(0deg); */
+            -webkit-animation: circleProgressLoad_left 10s linear infinite;
+        }
+
+        @-webkit-keyframes circleProgressLoad_right {
+            0% {
+                -webkit-transform: rotate(-135deg);
+            }
+            50%,
+            100% {
+                -webkit-transform: rotate(45deg);
+            }
+        }
+
+        @-webkit-keyframes circleProgressLoad_left {
+
+            0%,
+            50% {
+                -webkit-transform: rotate(-135deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(45deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circleProgress_wrapper">
+        <div class="wrapper right">
+            <div class="circleProgress rightcircle"></div>
+        </div>
+        <div class="wrapper left">
+            <div class="circleProgress leftcircle"></div>
+        </div>
+    </div>
+</body>
+
+</html>

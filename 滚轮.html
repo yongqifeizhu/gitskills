@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var nameEl = document.getElementById('name');
+var data1 = [
+	{
+		text: '小美',
+		value: 1
+	}, {
+		text: '猪猪',
+		value: 2
+	}
+];
+
+
+
+var picker = new Picker({
+	data: [data1, data2, data3],
+	selectedIndex: [0, 1, 2],
+	title: '我们都是小学生'
+});
+
+picker.on('picker.select', function (selectedVal, selectedIndex) {
+	nameEl.innerText = data1[selectedIndex[0]].text + ' ' + data2[selectedIndex[1]].text + ' ' + data3[selectedIndex[2]].text;
+})
+
+picker.on('picker.change', function (index, selectedIndex) {
+	console.log(index);
+	console.log(selectedIndex);
+});
+
+picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
+	console.log(selectedVal);
+	console.log(selectedIndex);
+});
+
+nameEl.addEventListener('click', function () {
+	picker.show();
+});
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	,
+			yearClick(index){
+				if(this.parameter=='k'){
+					let d=new Date(this.dtime[0]+'/'+this.dtime[1]+'/'+this.dtime[2]+' '+this.dtime[3]+':'+this.dtime[4]).getTime();
+					let k=new Date(this.yearList[index]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					console.log(k+':'+d);
+					if(k-d>=0){
+						this.ktime[0] = this.yearList[index]
+					}else{
+						this.code=4;
+					}
+				}else if(this.parameter=='m'){
+					this.mtime[0] = this.yearList[index];
+					let time = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime()-new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime()
+					this.totalPrice= ((time/1000)/60)/60*this.unitPrice;
+					/*let k = new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					let m = new Date(this.yearList[index]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime();
+					if(m-k>0){
+						this.mtime[0] = this.yearList[index]
+					}else{
+						alert('不能早于开始时间')
+					}*/
+				}
+			},
+			monthClick(index){
+				if(this.parameter=='k'){
+					let d=new Date(this.dtime[0]+'/'+this.dtime[1]+'/'+this.dtime[2]+' '+this.dtime[3]+':'+this.dtime[4]).getTime();
+					let k=new Date(this.ktime[0]+'/'+this.monthList[index]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					if(k-d>=0){
+						this.ktime[1] = this.monthList[index]
+					}else{
+						this.code=4;
+					}
+				}else if(this.parameter=='m'){
+					this.mtime[1] = this.monthList[index];
+					let time = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime()-new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime()
+					this.totalPrice= ((time/1000)/60)/60*this.unitPrice;
+					/*let k = new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					let m = new Date(this.mtime[0]+'/'+this.monthList[index]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime();
+					if(m-k>0){
+						this.mtime[1] = this.monthList[index]
+					}else{
+						alert('不能早于开始时间')
+					}*/
+				}
+			},
+			dayClick(index){
+				if(this.parameter=='k'){
+					let d=new Date(this.dtime[0]+'/'+this.dtime[1]+'/'+this.dtime[2]+' '+this.dtime[3]+':'+this.dtime[4]).getTime();
+					let k=new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.dayList[index]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					if(k-d>=0){
+						this.ktime[2] = this.dayList[index]
+					}else{
+						this.code=4;
+					}
+				}else if(this.parameter=='m'){
+					this.mtime[2] = this.dayList[index];
+					let time = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime()-new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime()
+					this.totalPrice= ((time/1000)/60)/60*this.unitPrice;
+					/*let k = new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					let m = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.dayList[index]+' '+this.mtime[3]+':'+this.mtime[4]).getTime();
+					if(m-k>0){
+						this.mtime[2] = this.dayList[index]
+					}else{
+						alert('不能早于开始时间')
+					}*/
+				}
+			},
+			hourClick(index){
+				if(this.parameter=='k'){
+					let d=new Date(this.dtime[0]+'/'+this.dtime[1]+'/'+this.dtime[2]+' '+this.dtime[3]+':'+this.dtime[4]).getTime();
+					let k=new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.hourList[index]+':'+this.ktime[4]).getTime();
+					if(k-d>=0){
+						this.ktime[3] = this.hourList[index];
+					}else{
+						this.code=4;
+					}
+				}else if(this.parameter=='m'){
+					this.mtime[3] = this.hourList[index];
+					let time = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime()-new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime()
+					this.totalPrice = ((time/1000)/60)/60*this.unitPrice;
+					console.log(this.totalPrice)
+					/*let k = new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					let m = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.hourList[index]+':'+this.mtime[4]).getTime();
+					if(m-k>0){
+						this.mtime[3] = this.hourList[index]
+					}else{
+						alert('不能早于开始时间')
+					}*/
+				}
+			},
+			minuteClick(index){
+				if(this.parameter=='k'){
+					let d=new Date(this.dtime[0]+'/'+this.dtime[1]+'/'+this.dtime[2]+' '+this.dtime[3]+':'+this.dtime[4]).getTime();
+					let k=new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.minuteList[index]).getTime();
+					if(k-d>=0){
+						this.ktime[4] = this.minuteList[index];
+					}else{
+						this.code=4;
+					}
+				}else if(this.parameter=='m'){
+					this.mtime[4] = this.minuteList[index];
+					let time = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.mtime[4]).getTime()-new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime()
+					this.totalPrice= ((time/1000)/60)/60*this.unitPrice;
+					/*let k = new Date(this.ktime[0]+'/'+this.ktime[1]+'/'+this.ktime[2]+' '+this.ktime[3]+':'+this.ktime[4]).getTime();
+					let m = new Date(this.mtime[0]+'/'+this.mtime[1]+'/'+this.mtime[2]+' '+this.mtime[3]+':'+this.minuteList[index]).getTime();
+					if(m-k>0){
+						this.mtime[4] = this.minuteList[index]
+					}else{
+						alert('不能输入过去的时间')
+					}*/
+				}
+			}
+</html>

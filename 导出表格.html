@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function getExcel(tableId){
+	var data={
+		page:1,
+		pageSize:65535
+	};
+	var deviceMac=$(".selectClass[name='deviceMac']").val();
+	var ctrlCode=$(".selectClass[name='ctrlCode']").val();
+	var startDate=$(".selectClass[name='timeSpanstart']").val();
+	var endDate=$(".selectClass[name='timeSpanend']").val();
+	if(!(deviceMac==""||deviceMac==null)){
+		data.deviceMac=deviceMac;
+	}
+	if(!(ctrlCode==""||ctrlCode==null)){
+		data.conCode=ctrlCode;
+	}
+	if(!(startDate==""||startDate==null)){
+		data.startDate=startDate;
+	}
+	if(!(endDate==""||endDate==null)){
+		data.endDate=endDate;
+	}
+	var listData={
+		failMethod:1
+	};
+	//console.log(data);
+	$sokeedAjax.requestAjaxRemote(selectTableUrl, "post", "json", data, getExcelMsgSuccessed,listData);
+	
+}
+
+function getExcelMsgSuccessed(message,listData){
+	console.log(message);
+	var data = {title:[
+	                   {"value":"序号", "type":"ROW_HEADER_HEADER", "datatype":"string"},
+	                   {"value":"物联网卡号", "type":"ROW_HEADER_HEADER", "datatype":"string"},
+	                   {"value":"设备编码", "type":"ROW_HEADER_HEADER", "datatype":"string"},
+	                   {"value":"控制器编码匹配日期", "type":"ROW_HEADER_HEADER", "datatype":"string"}
+	                   ],data:[]};
+	var line,results=message.results;
+	for(var i=0;i<results.length;i++){
+			line=[];
+    var time=new Date(results[i].date.time).Format("yyyy-MM-dd hh:mm:ss");
+			line.push({value:(i+1),type:"ROW_HEADER"});
+			line.push({value:results[i].cardnumber,type:"ROW_HEADER"});
+			line.push({value:results[i].concode,type:"ROW_HEADER"});
+			line.push({value:time,type:"ROW_HEADER"});
+			data.data.push(line);
+	}
+	JSONToExcelConvertor(data.data, "控制器编码表", data.title);
+}
+
+function JSONToExcelConvertor(JSONData, FileName, ShowLabel) {  
+    //先转化json  
+    var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;  
+    var excel = "<table id='allMessage' class='allMessage'>";      
+      
+    //设置表头  
+    var row = "<tr>"; 
+//    alert(ShowLabel.length);
+    for (var i = 0, l = ShowLabel.length; i < l; i++) {  
+	</script>
+</html>

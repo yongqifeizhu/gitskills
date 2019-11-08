@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="file" name="" onchange="aa()" id="uploadForm" value="" />
+		<button type="button" onclick="bb()" >按钮</button>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		let  formData = new FormData();
+		function aa() {
+			formData = new FormData();
+			var img_file=document.getElementById('uploadForm');
+			formData.append('file',img_file.files[0]);
+		}
+		function bb(){
+			$.ajax({
+				type:"POST",
+				url:'http://192.168.1.109:9035/api/navigation/importImg',
+				async:false,
+				data:formData,
+				contentType : false,
+				processData : false,
+				successl:function(message){
+					
+				}
+			});
+		}
+			
+		/*$.ajax({
+			type:"POST",
+			url:URL,
+			async:false,
+			data:formData,
+			contentType : false,
+			processData : false,
+			successl:function(message){
+				
+			}
+		});*/
+	</script>
+
+</html>

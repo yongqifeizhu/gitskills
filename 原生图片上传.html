@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+ 
+    <script>
+        function saveUser(){
+            var file = document.getElementById("file").files[0];
+            var form = new FormData();
+            form.append("file", file);
+            $.ajax({
+            	type:"post",
+            	url:"http://192.168.2.107:8080/suriot_vehicle/company/list",
+            	async:true,
+            	data:form,
+            	processData:false,
+            	contentType:false,
+            	success:function(a){
+            		console.log(a)
+            	}
+            });
+        }
+    </script>
+</head>
+<body style="overflow:scroll;overflow-y:hidden;overflow-x:hidden">
+<div style="height: 20px"></div>
+<div class="container">
+	<input id="file" type="file" style="" onchange="saveUser()">
+</div>
+</body>
+</html>
